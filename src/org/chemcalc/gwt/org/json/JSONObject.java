@@ -20,9 +20,33 @@ public class JSONObject {
 	
 	public JSONObject put(String key, String value) {
 		if(value == null) {
-			return put(key, JSONNull.getInstance());
+			return putNull(key);
 		} else {
 			return put(key, new JSONString(value));
+		}
+	}
+	
+	public JSONObject put(String key, Double value) {
+		if(value == null) {
+			return putNull(key);
+		} else {
+			return put(key, value.doubleValue());
+		}
+	}
+	
+	public JSONObject put(String key, Integer value) {
+		if(value == null) {
+			return putNull(key);
+		} else {
+			return put(key, value.intValue());
+		}
+	}
+	
+	public JSONObject put(String key, Float value) {
+		if(value == null) {
+			return putNull(key);
+		} else {
+			return put(key, value.floatValue());
 		}
 	}
 	
@@ -50,11 +74,6 @@ public class JSONObject {
 		return put(key, value.getGwtObj());
 	}
 	
-	public JSONObject put(String key, JSONValue value) {
-		obj.put(key, value);
-		return this;
-	}
-	
 	public JSONObject put(String key, FormulaPart part) {
 		return put(key, part.toString());
 	}
@@ -65,6 +84,15 @@ public class JSONObject {
 	
 	public com.google.gwt.json.client.JSONObject getGwtObj() {
 		return obj;
+	}
+	
+	private JSONObject put(String key, JSONValue value) {
+		obj.put(key, value);
+		return this;
+	}
+	
+	private JSONObject putNull(String key) {
+		return put(key, JSONNull.getInstance());
 	}
 	
 }
