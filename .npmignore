@@ -1,0 +1,5 @@
+# ignore all files
+*
+
+# keep library
+!lib.js
