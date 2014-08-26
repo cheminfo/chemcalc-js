@@ -1,7 +1,8 @@
 <module rename-to="chemcalc">
 	<inherits name="org.chemcalc.gwt.GWT" />
 	<inherits name="org.timepedia.exporter.Exporter" />
-	<inherits name="org.chemcalc" />
+	<inherits name="org.Chemcalc" />
+	<inherits name="com.google.gwt.regexp.RegExp" />
 	<entry-point class="org.chemcalc.js.client.ChemcalcJS" />
 	<set-property name="export" value="yes" />
 	<set-property name="user.agent" value="safari" />
