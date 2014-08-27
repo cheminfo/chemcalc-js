@@ -13,7 +13,7 @@ Usage
 
 ### In NodeJS
 ```javascript
-var chemcalc = require('chemcalc').ChemCalc;
+var chemcalc = require('chemcalc').Chemcalc;
 var result = chemcalc.analyseMF('CaSO4.1/2H2O');
 ```
 ### In the browser
