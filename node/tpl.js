@@ -3,8 +3,7 @@ function getExports(parent, navigator) {
     //<%= gwtContent %>
 
     gwtOnLoad();
-    var toReturn = $wnd['<%= exportsName %>'];
-
+    toReturn = $wnd.CI.Chemcalc;
     toReturn.version = '<%= version %>';
 
     return toReturn;
@@ -39,7 +38,7 @@ function getExports(parent, navigator) {
                 return getExports(fakeWindow, navigator);
             });
         } else { // Global
-            window['<%= exportsName %>'] = getExports(fakeWindow, navigator);
+            window.Chemcalc = getExports(fakeWindow, navigator);
         }
     }
 
