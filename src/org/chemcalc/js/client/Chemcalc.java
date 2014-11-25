@@ -227,8 +227,8 @@ public class Chemcalc implements Exportable {
 
 	private static native String aa1To3(String code) /*-{
 		var aa = @org.chemcalc.js.client.Chemcalc::getAA()();
-		for (var i=0; i<this.aa.length; i++) {
-			if (this.aa[i].aa1==code) {
+		for (var i=0; i<aa.length; i++) {
+			if (aa[i].aa1==code) {
 				return aa[i].aa3;
 			}
 		}
@@ -304,7 +304,6 @@ public class Chemcalc implements Exportable {
 
 		if (mfs.length==0) mfs=mfs.concat([mf]);
 			return mfs;
-		}
 
 	}-*/;
 	
