@@ -6,20 +6,20 @@ import org.chemcalc.core.LoadFromFiles;
 import org.chemcalc.services.JSONForMF;
 import org.chemcalc.services.MFFromMonoisotopicMass;
 import org.json.JSONObject;
-import org.timepedia.exporter.client.Export;
-import org.timepedia.exporter.client.ExportPackage;
-import org.timepedia.exporter.client.Exportable;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.js.JsExport;
+import com.google.gwt.core.client.js.JsNamespace;
+import com.google.gwt.core.client.js.JsType;
 
-@ExportPackage("CI")
-@Export
-public class Chemcalc implements Exportable {
+@JsType
+@JsNamespace("$wnd.CI")
+@JsExport
+public class Chemcalc {
 
 	private static JsArray<JavaScriptObject> aa = null;
 
-	@Export
 	public static JavaScriptObject analyseMF(String mf, JavaScriptObject options) {
 		HashMap<String, String> mapOptions = convertToHashMap(options);
 		mapOptions.put("mf", mf);
@@ -27,7 +27,6 @@ public class Chemcalc implements Exportable {
 				LoadFromFiles.groups(), LoadFromFiles.elements()));
 	}
 
-	@Export
 	public static JavaScriptObject mfFromMonoisotopicMass(double mass,
 			JavaScriptObject options) {
 		HashMap<String, String> mapOptions = convertToHashMap(options);
@@ -36,7 +35,6 @@ public class Chemcalc implements Exportable {
 				LoadFromFiles.groups(), LoadFromFiles.elements()));
 	}
 
-	@Export
 	public static native String convertAASequence(String mf) /*-{
 		// this function will check if it is a sequence of aa in 1 letter or 3 letters and convert them if it is the case
 			// it could be a multiline mf !
@@ -235,12 +233,10 @@ public class Chemcalc implements Exportable {
 		return code;
 	}-*/;
 	
-	@Export
 	public static native String chargePeptide(String mf) /*-{
 		return mf.replace(/^H([^+])/,"H+H$1").replace(/(Arg|His|Lys)(?!\()/g,"$1(H+)");
 	}-*/;
 	
-	@Export
 	public static native String generatePeptideFragments(String mf, JavaScriptObject options) /*-{
 		if (! options) options={a:false, b:true, c:false, x:false, y:true, z:false};
 		var mfs=[];
@@ -306,8 +302,5 @@ public class Chemcalc implements Exportable {
 			return mfs;
 
 	}-*/;
-	
-	
-	
 	
 }

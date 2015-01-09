@@ -1,13 +1,15 @@
 <project name="chemcalcJS" default="all-min">
-	<property name="gwt" location="/home/mzasso/.eclipse/org.eclipse.platform_4.4.0_1473617060_linux_gtk_x86_64/plugins/com.google.gwt.eclipse.sdkbundle_2.6.0/gwt-2.6.0" />
+	<property name="gwt" location="../GWT/2.7.0" />
+	<path id="project.class.path">
+		<pathelement location="src"/>
+		<pathelement location="../chemcalcLibrary/src" />
+		<pathelement location="${gwt}/gwt-dev.jar" />
+		<pathelement location="${gwt}/gwt-user.jar" />
+	</path>
 	<target name="compile-min">
 		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
 			<classpath>
-				<pathelement location="src"/>
-				<pathelement location="../chemcalcLibrary/src" />
-				<pathelement location="${gwt}/gwt-dev.jar" />
-				<pathelement location="${gwt}/gwt-user.jar" />
-				<pathelement location="gwtexporter-2.5.1.jar" />
+				<path refid="project.class.path"/>
 			</classpath>
 			<jvmarg value="-Xmx512m"/>
 			<arg line="-style" />
@@ -17,6 +19,8 @@
 			<arg line="-XnocheckCasts" />
 			<arg line="-XnoclassMetadata" />
 			<arg line="-nocheckAssertions" />
+			<arg line="-XjsInteropMode" />
+			<arg value="JS" />
 			<!--<arg line="-XclosureCompiler" />-->
 			<arg value="org.chemcalc.js.ChemcalcJS" />
 		</java>
@@ -24,15 +28,18 @@
 	<target name="compile">
 		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
 			<classpath>
-				<pathelement location="src"/>
-				<pathelement location="../chemcalcLibrary/src" />
-				<pathelement location="${gwt}/gwt-dev.jar" />
-				<pathelement location="${gwt}/gwt-user.jar" />
-				<pathelement location="gwtexporter-2.5.1.jar" />
+				<path refid="project.class.path"/>
 			</classpath>
 			<jvmarg value="-Xmx512m"/>
 			<arg line="-style" />
 			<arg value="DETAILED"/>
+			<arg line="-optimize" />
+			<arg value="9"/>
+			<arg line="-XnocheckCasts" />
+			<arg line="-XnoclassMetadata" />
+			<arg line="-nocheckAssertions" />
+			<arg line="-XjsInteropMode" />
+			<arg value="JS" />
 			<arg value="org.chemcalc.js.ChemcalcJS" />
 		</java>
 	</target>
@@ -40,7 +47,7 @@
 		<exec executable="npm" dir="node">
 			<arg value="update" />
 		</exec>
-		<fileset dir="war/chemcalc" includes="*.cache.html" id="buildFile" />
+		<fileset dir="war/chemcalc" includes="*.cache.js" id="buildFile" />
 		<pathconvert property="buildFile" refid="buildFile"></pathconvert>
 		<exec failonerror="true" executable="node" dir="node">
 			<arg value="index.js" />
@@ -49,7 +56,7 @@
 			<arg line="-o" />
 			<arg value="../lib.js" />
 			<arg line="-e" />
-			<arg value="CI" />
+			<arg value="CI.Chemcalc" />
 			<arg line="-p" />
 			<arg value="../package.json" />
 		</exec> 
