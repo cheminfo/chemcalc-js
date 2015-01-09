@@ -1,7 +1,7 @@
 /**
  * chemcalc - Analyse molecular formula
- * @version v2.0.1
- * @date 2015-01-09T08:30:38.146Z
+ * @version v2.0.2
+ * @date 2015-01-09T14:00:53.558Z
  * @link http://www.chemcalc.org
  * @license BSD
 */
@@ -668,7 +668,7 @@ Hg(5,43,{3:1,17:1,43:1,5:1},vl,wl,xl,yl,zl,Al);_.A=function Cl(a){return hl(this
 
     var toReturn = $wnd["CI"]["Chemcalc"];
 
-    toReturn.version = '2.0.1';
+    toReturn.version = '2.0.2';
 
     return toReturn;
 }
