@@ -22,7 +22,7 @@ var result = chemcalc.analyseMF('CaSO4.1/2H2O');
 
 #### By default
 ```js
-var result = Chemcalc.analyseMF('PhNH2.HCl');
+var result = CI.Chemcalc.analyseMF('PhNH2.HCl');
 ```
 #### Using an AMD loader
 ```js
@@ -32,6 +32,12 @@ require(['lib/chemcalc'], function(Chemcalc) {
 ```
 
 ## Documentation
+
+### General
+
+#### getInfo()
+
+Get information about elements, isotopes and special groups.  
 
 ### Molecular formula
 

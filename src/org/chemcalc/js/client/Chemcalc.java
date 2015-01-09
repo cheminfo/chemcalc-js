@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.chemcalc.core.LoadFromFiles;
 import org.chemcalc.services.JSONForMF;
+import org.chemcalc.services.GetInfo;
 import org.chemcalc.services.MFFromMonoisotopicMass;
 import org.json.JSONObject;
 
@@ -19,6 +20,10 @@ import com.google.gwt.core.client.js.JsType;
 public class Chemcalc {
 
 	private static JsArray<JavaScriptObject> aa = null;
+	
+	public static JavaScriptObject getInfo() {
+		return JSONObjectToJSObject(GetInfo.execute(new HashMap<String, String>(), LoadFromFiles.groups(), LoadFromFiles.elements()));
+	}
 
 	public static JavaScriptObject analyseMF(String mf, JavaScriptObject options) {
 		HashMap<String, String> mapOptions = convertToHashMap(options);
