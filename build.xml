@@ -1,5 +1,5 @@
 <project name="chemcalcJS" default="all-min">
-	<property name="gwt" location="../GWT/2.7.0" />
+	<property name="gwt" location="/usr/local/gwt/2.7.0" />
 	<path id="project.class.path">
 		<pathelement location="src"/>
 		<pathelement location="../chemcalcLibrary/src" />
