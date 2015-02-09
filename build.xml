@@ -1,50 +1,28 @@
-<project name="chemcalcJS" default="all-min">
-	<property name="gwt" location="/usr/local/gwt/2.7.0" />
-	<path id="project.class.path">
-		<pathelement location="src"/>
-		<pathelement location="../../../workspace/chemcalcLibrary/src" />
-		<pathelement location="${gwt}/gwt-dev.jar" />
-		<pathelement location="${gwt}/gwt-user.jar" />
-	</path>
+<project name="chemcalc-js" default="all-min">
 	<target name="compile-min">
-		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
-			<classpath>
-				<path refid="project.class.path"/>
-			</classpath>
-			<jvmarg value="-Xmx512m"/>
-			<arg line="org.chemcalc.js.ChemcalcJS -style OBF -optimize 9 -XnocheckCasts -XnoclassMetadata -nocheckAssertions -XjsInteropMode JS" />
-		</java>
+		<exec failonerror="true" executable="gulp">
+			<arg line="compile:min" />
+		</exec> 
 	</target>
 	<target name="compile">
-		<java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
-			<classpath>
-				<path refid="project.class.path"/>
-			</classpath>
-			<jvmarg value="-Xmx512m"/>
-			<arg line="org.chemcalc.js.ChemcalcJS -style DETAILED -optimize 9 -XnocheckCasts -XnoclassMetadata -nocheckAssertions -XjsInteropMode JS" />
-		</java>
+		<exec failonerror="true" executable="gulp">
+			<arg line="compile:pretty" />
+		</exec> 
 	</target>
 	<target name="export">
-		<exec failonerror="true" executable="npm">
-			<arg value="update" />
-		</exec>
-		<fileset dir="war/chemcalc" includes="*.cache.js" id="buildFile" />
-		<pathconvert property="buildFile" refid="buildFile" />
-		<exec failonerror="true" executable="npm">
-			<arg line="run build -- -i ${buildFile} -o lib.js -e CI.Chemcalc -p package.json" />
+		<exec failonerror="true" executable="gulp">
+			<arg line="export" />
 		</exec> 
 	</target>
 	<target name="all-min">
-		<antcall>
-			<target name="compile-min" />
-			<target name="export" />
-		</antcall>
+		<exec failonerror="true" executable="gulp">
+			<arg line="build:min" />
+		</exec> 
 	</target>
 	<target name="all">
-		<antcall>
-			<target name="compile" />
-			<target name="export" />
-		</antcall>
+		<exec failonerror="true" executable="gulp">
+			<arg line="build:pretty" />
+		</exec> 
 	</target>
 	<target name="devmode" description="Run development mode">
 		<java failonerror="true" fork="true" classname="com.google.gwt.dev.DevMode">
