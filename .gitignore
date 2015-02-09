@@ -1,4 +1,5 @@
 gwt-unitCache
 war
 .settings/
-node/node_modules/
+node_modules
+.idea

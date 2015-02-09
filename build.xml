@@ -2,7 +2,7 @@
 	<property name="gwt" location="/usr/local/gwt/2.7.0" />
 	<path id="project.class.path">
 		<pathelement location="src"/>
-		<pathelement location="../chemcalcLibrary/src" />
+		<pathelement location="../../../workspace/chemcalcLibrary/src" />
 		<pathelement location="${gwt}/gwt-dev.jar" />
 		<pathelement location="${gwt}/gwt-user.jar" />
 	</path>
@@ -12,17 +12,7 @@
 				<path refid="project.class.path"/>
 			</classpath>
 			<jvmarg value="-Xmx512m"/>
-			<arg line="-style" />
-			<arg value="OBF"/>
-			<arg line="-optimize" />
-			<arg value="9"/>
-			<arg line="-XnocheckCasts" />
-			<arg line="-XnoclassMetadata" />
-			<arg line="-nocheckAssertions" />
-			<arg line="-XjsInteropMode" />
-			<arg value="JS" />
-			<!--<arg line="-XclosureCompiler" />-->
-			<arg value="org.chemcalc.js.ChemcalcJS" />
+			<arg line="org.chemcalc.js.ChemcalcJS -style OBF -optimize 9 -XnocheckCasts -XnoclassMetadata -nocheckAssertions -XjsInteropMode JS" />
 		</java>
 	</target>
 	<target name="compile">
@@ -31,34 +21,17 @@
 				<path refid="project.class.path"/>
 			</classpath>
 			<jvmarg value="-Xmx512m"/>
-			<arg line="-style" />
-			<arg value="DETAILED"/>
-			<arg line="-optimize" />
-			<arg value="9"/>
-			<arg line="-XnocheckCasts" />
-			<arg line="-XnoclassMetadata" />
-			<arg line="-nocheckAssertions" />
-			<arg line="-XjsInteropMode" />
-			<arg value="JS" />
-			<arg value="org.chemcalc.js.ChemcalcJS" />
+			<arg line="org.chemcalc.js.ChemcalcJS -style DETAILED -optimize 9 -XnocheckCasts -XnoclassMetadata -nocheckAssertions -XjsInteropMode JS" />
 		</java>
 	</target>
 	<target name="export">
-		<exec executable="npm" dir="node">
+		<exec failonerror="true" executable="npm">
 			<arg value="update" />
 		</exec>
 		<fileset dir="war/chemcalc" includes="*.cache.js" id="buildFile" />
-		<pathconvert property="buildFile" refid="buildFile"></pathconvert>
-		<exec failonerror="true" executable="node" dir="node">
-			<arg value="index.js" />
-			<arg line="-i" />
-			<arg value="${buildFile}" />
-			<arg line="-o" />
-			<arg value="../lib.js" />
-			<arg line="-e" />
-			<arg value="CI.Chemcalc" />
-			<arg line="-p" />
-			<arg value="../package.json" />
+		<pathconvert property="buildFile" refid="buildFile" />
+		<exec failonerror="true" executable="npm">
+			<arg line="run build -- -i ${buildFile} -o lib.js -e CI.Chemcalc -p package.json" />
 		</exec> 
 	</target>
 	<target name="all-min">
@@ -79,12 +52,7 @@
 				<path refid="project.class.path"/>
 			</classpath>
 			<jvmarg value="-Xmx256M"/>
-			<arg value="-startupUrl"/>
-			<arg value="Test.html"/>
-			<arg line="-XjsInteropMode" />
-			<arg value="JS" />
-		    <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->
-			<arg value="org.chemcalc.js.ChemcalcJSDev"/>
+			<arg line="org.chemcalc.js.ChemcalcJSDev -startupUrl Test.html -XjsInteropMode JS"/>
 		</java>
 	</target>
 </project>

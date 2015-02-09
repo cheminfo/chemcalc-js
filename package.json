@@ -3,6 +3,9 @@
   "version": "2.0.4",
   "description": "Analyse molecular formula",
   "main": "lib.js",
+  "scripts": {
+    "build": "gwt-api-exporter"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/cheminfo/chemcalc-js.git"
@@ -22,12 +25,21 @@
     "isotopomers"
   ],
   "contributors": [
-    {"name":"Michaël Zasso", "email":"michael.zasso@epfl.ch"},
-    {"name":"Luc Patiny", "email":"luc.patiny@epfl.ch"}
+    {
+      "name": "Michaël Zasso",
+      "email": "michael.zasso@epfl.ch"
+    },
+    {
+      "name": "Luc Patiny",
+      "email": "luc.patiny@epfl.ch"
+    }
   ],
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/cheminfo/chemcalc-js/issues"
   },
-  "homepage": "http://www.chemcalc.org"
+  "homepage": "http://www.chemcalc.org",
+  "devDependencies": {
+    "gwt-api-exporter": "^1.0.0"
+  }
 }
