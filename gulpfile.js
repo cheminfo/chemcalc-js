@@ -8,12 +8,19 @@ var exporter = require('gwt-api-exporter');
 
 var config = require('./config.json');
 
-var classpath = [
-        'src',
-        config.chemcalc,
-        path.join(config.gwt, 'gwt-dev.jar'),
-        path.join(config.gwt, 'gwt-user.jar')
-    ].join(':');
+var classpath = ['src'];
+
+if (config.classpath) {
+    if (typeof config.classpath === 'string') {
+        classpath.push(config.classpath);
+    } else if (Array.isArray(config.classpath)) {
+        classpath = classpath.concat(config.class);
+    }
+}
+
+classpath.push(path.join(config.gwt, 'gwt-dev.jar'), path.join(config.gwt, 'gwt-user.jar'));
+
+classpath = classpath.join(':');
 
 gulp.task('compile:min', compile('min'));
 gulp.task('compile:pretty', compile('pretty'));
