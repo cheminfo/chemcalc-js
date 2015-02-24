@@ -1,6 +1,6 @@
 {
   "name": "chemcalc",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Analyse molecular formula",
   "main": "lib.js",
   "repository": {
@@ -38,6 +38,6 @@
   "homepage": "http://www.chemcalc.org",
   "devDependencies": {
     "gulp": "^3.8.10",
-    "gwt-api-exporter": "^1.0.0"
+    "gwt-api-exporter": "^1.0.1"
   }
 }
