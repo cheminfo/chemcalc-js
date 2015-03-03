@@ -1,3 +1,10 @@
+2.1.0 / 2015-03-03
+==================
+
+* update java library
+ * add charge in the answer of mfFromMonoisotopicMass
+* mfFromMonoisotopicMass and analyseMF now throw in case of error
+
 2.0.5 / 2015-02-24
 ==================
 
