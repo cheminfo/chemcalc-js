@@ -18,6 +18,14 @@ public class JSONObject {
 		obj = new com.google.gwt.json.client.JSONObject();
 	}
 	
+	public String getString(String key) {
+		return obj.get(key).isString().stringValue();
+	}
+	
+	public boolean has(String key) {
+		return obj.containsKey(key);
+	}
+	
 	public JSONObject put(String key, String value) {
 		if(value == null) {
 			return putNull(key);

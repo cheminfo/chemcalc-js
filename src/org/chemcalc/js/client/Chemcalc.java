@@ -8,6 +8,7 @@ import org.chemcalc.services.GetInfo;
 import org.chemcalc.services.MFFromMonoisotopicMass;
 import org.json.JSONObject;
 
+import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.js.JsExport;
@@ -76,7 +77,11 @@ public class Chemcalc {
 
 	// Private methods
 	private static JavaScriptObject JSONObjectToJSObject(JSONObject json) {
-		return json.getGwtObj().getJavaScriptObject();
+		if (json.has("error")) {
+			throw new JavaScriptException(json.getString("error"));
+		} else {
+			return json.getGwtObj().getJavaScriptObject();
+		}
 	}
 
 	private static native HashMap<String, String> convertToHashMap(
