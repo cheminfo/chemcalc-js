@@ -1,6 +1,6 @@
 {
   "name": "chemcalc",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Analyse molecular formula",
   "main": "lib.js",
   "repository": {

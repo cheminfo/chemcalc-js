@@ -1,3 +1,8 @@
+2.1.2 / 2015-03-04
+==================
+
+* update element data (this fixes a regression with elements that have no natural isotope)
+
 2.1.1 / 2015-03-03
 ==================
 
