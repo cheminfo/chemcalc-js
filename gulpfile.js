@@ -5,18 +5,20 @@ var gulp = require('gulp');
 var path = require('path');
 var fs = require('fs');
 var exporter = require('gwt-api-exporter');
+var argv = require('minimist')(process.argv.slice(2));
 
-var config = require('./config.json');
+var verbose = argv.v;
+
+try {
+    var config = require('./config.json');
+} catch (e) {
+    console.error('config.json not found. You can copy config.default.json to start from an example.');
+    process.exit(1);
+}
 
 var classpath = ['src'];
 
-if (config.classpath) {
-    if (typeof config.classpath === 'string') {
-        classpath.push(config.classpath);
-    } else if (Array.isArray(config.classpath)) {
-        classpath = classpath.concat(config.class);
-    }
-}
+classpath.push(path.join(config.chemcalc, 'src'));
 
 classpath.push(path.join(config.gwt, 'gwt-dev.jar'), path.join(config.gwt, 'gwt-user.jar'));
 
@@ -31,8 +33,10 @@ gulp.task('export', build);
 
 gulp.task('default', ['build:min']);
 
+gulp.task('update', updateCVS);
+
 function build(done) {
-    var warDir = path.join('war', config.war);
+    var warDir = 'war/chemcalc';
     var files = fs.readdirSync(warDir);
     var file;
     for (var i = 0; i < files.length; i++) {
@@ -46,9 +50,9 @@ function build(done) {
     }
     exporter({
         input: file,
-        output: 'lib.js',
-        exports: config.exports,
-        package: require('./package.json')
+        output: 'dist/chemcalc.js',
+        exports: 'CI.Chemcalc',
+        'package': require('./package.json')
     }).then(function () {
         done();
     }, function (e) {
@@ -57,24 +61,46 @@ function build(done) {
 }
 
 function compile(mode) {
-    var args = [
-        '-Xmx512m',
-        '-cp', classpath,
-        'com.google.gwt.dev.Compiler',
-        config.entrypoint,
-        '-optimize', '9',
-        '-XnocheckCasts',
-        '-XnoclassMetadata',
-        '-nocheckAssertions',
-        '-XjsInteropMode', 'JS',
-        '-style'
-    ];
-    if (mode === 'min') {
-        args.push('OBF');
-    } else {
-        args.push('PRETTY');
-    }
     return function () {
-        child_process.execFileSync('java', args)
+        log('Compiling module chemcalc');
+        var args = [
+            '-Xmx512m',
+            '-cp', classpath,
+            'com.google.gwt.dev.Compiler',
+            'org.chemcalc.js.ChemcalcJS',
+            '-optimize', '9',
+            '-XnocheckCasts',
+            '-XnoclassMetadata',
+            '-nocheckAssertions',
+            '-XjsInteropMode', 'JS',
+            '-style'
+        ];
+        if (mode === 'min') {
+            args.push('OBF');
+        } else {
+            args.push('PRETTY');
+        }
+        if (verbose) {
+            args.push('-logLevel', 'DEBUG');
+        }
+        var result = child_process.execFileSync('java', args);
+        if (verbose) {
+            var name = 'compile.log';
+            fs.writeFileSync('./' + name, result);
+            log('Compilation log written to ' + name);
+        }
+    }
+}
+
+function updateCVS() {
+    log('updating chemcalc CVS repo');
+    child_process.execFileSync('cvs', ['update'], {
+        cwd: config.chemcalc
+    });
+}
+
+function log(value) {
+    if (verbose) {
+        console.log(value);
     }
 }

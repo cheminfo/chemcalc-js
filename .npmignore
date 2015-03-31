@@ -1,5 +1,3 @@
-# ignore all files
 *
-
-# keep library
-!lib.js
+!dist/
+!dist/*

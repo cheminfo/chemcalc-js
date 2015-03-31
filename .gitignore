@@ -3,3 +3,5 @@ war
 .settings
 node_modules
 .idea
+config.json
+*.log

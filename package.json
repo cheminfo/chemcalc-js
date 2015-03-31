@@ -2,7 +2,10 @@
   "name": "chemcalc",
   "version": "2.1.2",
   "description": "Analyse molecular formula",
-  "main": "lib.js",
+  "main": "dist/chemcalc.js",
+  "scripts": {
+    "build": "gulp update && gulp build:min"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/cheminfo/chemcalc-js.git"
@@ -37,7 +40,8 @@
   },
   "homepage": "http://www.chemcalc.org",
   "devDependencies": {
-    "gulp": "^3.8.10",
-    "gwt-api-exporter": "^1.0.1"
+    "gulp": "^3.8.11",
+    "gwt-api-exporter": "^1.0.1",
+    "minimist": "^1.1.1"
   }
 }
