@@ -4,6 +4,7 @@
   "description": "Analyse molecular formula",
   "main": "dist/chemcalc.js",
   "scripts": {
+    "test": "mocha --require should --reporter mocha-better-spec-reporter --recursive",
     "build": "gulp update && gulp build:min"
   },
   "repository": {
@@ -42,6 +43,9 @@
   "devDependencies": {
     "gulp": "^3.8.11",
     "gwt-api-exporter": "^1.0.1",
-    "minimist": "^1.1.1"
+    "minimist": "^1.1.1",
+    "mocha": "latest",
+    "mocha-better-spec-reporter": "latest",
+    "should": "latest"
   }
 }
