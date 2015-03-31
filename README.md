@@ -1,5 +1,9 @@
 # chemcalc-js
 
+  [![NPM version][npm-image]][npm-url]
+  [![build status][travis-image]][travis-url]
+  [![npm download][download-image]][download-url]
+
 Library allowing to manipulate and find molecular formula.  
 This library contains 2 main functions: <b>analyzeMF</b> and <b>mfFromMonoisotopicMass</b>.  
 In all the molecular formula you are allowed to use groups like Phe, Ala, Gly, Ph, ...
@@ -128,3 +132,19 @@ __Arguments__
 
 * `mf` - string with the molecular formula
 * `options` - object with requested fragments. Default: `{a:false, b:true, c:false, x:false, y:true, z:false, i:false}`
+
+## Development
+
+To build the project, run `gulp build:min`
+To test the build, run `npm test`
+
+## License
+
+  [BSD](./LICENSE)
+
+[npm-image]: https://img.shields.io/npm/v/chemcalc.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/chemcalc
+[travis-image]: https://img.shields.io/travis/cheminfo/chemcalc/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/cheminfo/chemcalc
+[download-image]: https://img.shields.io/npm/dm/chemcalc.svg?style=flat-square
+[download-url]: https://npmjs.org/package/chemcalc
