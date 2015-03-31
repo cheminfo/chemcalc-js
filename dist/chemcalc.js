@@ -1,7 +1,7 @@
 /**
  * chemcalc - Analyse molecular formula
- * @version v2.1.2
- * @date 2015-03-31T08:25:00.026Z
+ * @version v2.1.3
+ * @date 2015-03-31T08:40:16.403Z
  * @link http://www.chemcalc.org
  * @license BSD
 */
@@ -675,7 +675,7 @@ var fk,gk=0,hk;Lg(34,45,{116:1},nk,ok);var cf=zi(34);Lg(22,45,{116:1},tk,uk,vk);
 
         var toReturn = $wnd["CI"]["Chemcalc"];
 
-        toReturn.version = '2.1.2';
+        toReturn.version = '2.1.3';
 
         return toReturn;
     }
@@ -686,24 +686,30 @@ var fk,gk=0,hk;Lg(34,45,{116:1},nk,ok);var cf=zi(34);Lg(22,45,{116:1},tk,uk,vk);
         var timers = require('timers');
         fakeWindow.setTimeout = timers.setTimeout;
         fakeWindow.clearTimeout = timers.clearTimeout;
+        fakeWindow.setInterval = timers.setInterval;
+        fakeWindow.clearInterval = timers.clearInterval;
         fakeWindow.document = {};
         module.exports = getExports(fakeWindow);
     } else { // Browser
-        fakeWindow.setTimeout = function () {
-            return window.setTimeout.apply(window, arguments);
-        };
-        fakeWindow.clearTimeout = function () {
-            return window.clearTimeout.apply(window, arguments);
-        };
-        fakeWindow.document = window.document;
+        if (true) {
+            // Timer proxies
+            fakeWindow.setTimeout = window.setTimeout.bind(window);
+            fakeWindow.clearTimeout = window.clearTimeout.bind(window);
+            fakeWindow.setInterval = window.setInterval.bind(window);
+            fakeWindow.clearInterval = window.clearInterval.bind(window);
+            fakeWindow.document = window.document;
+        } else {
+            fakeWindow = window;
+        }
+
         if (typeof define === 'function' && define.amd) { // AMD
             define(function () {
                 return getExports(fakeWindow);
             });
         } else { // Global
-            var path = ["CI","Chemcalc"],
-                l = path.length - 1,
-                obj = window;
+            var path = ["CI","Chemcalc"];
+            var l = path.length - 1;
+            var obj = window;
             for (var i = 0; i < l; i++) {
                 obj = obj[path[i]] || (obj[path[i]] = {});
             }

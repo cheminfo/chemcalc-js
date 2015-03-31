@@ -1,6 +1,6 @@
 {
   "name": "chemcalc",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Analyse molecular formula",
   "main": "dist/chemcalc.js",
   "repository": {
@@ -22,8 +22,14 @@
     "isotopomers"
   ],
   "authors": [
-    {"name":"Michaël Zasso", "email":"michael.zasso@epfl.ch"},
-    {"name":"Luc Patiny", "email":"luc.patiny@epfl.ch"}
+    {
+      "name": "Michaël Zasso",
+      "email": "michael.zasso@epfl.ch"
+    },
+    {
+      "name": "Luc Patiny",
+      "email": "luc.patiny@epfl.ch"
+    }
   ],
   "license": "BSD",
   "bugs": {
