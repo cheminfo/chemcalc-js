@@ -135,7 +135,7 @@ __Arguments__
 
 ## Development
 
-To build the project, run `gulp build:min`
+To build the project, run `gulp build:min`  
 To test the build, run `npm test`
 
 ## License
