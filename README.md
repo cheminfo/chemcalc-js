@@ -58,7 +58,7 @@ __Arguments__
 
 __Options__
 
-* `isotopomers` - Should we calculate the isotompers, possible values are xy, jcamp, array or any combination (default: false). The use of "array" allows to get back a javascript array for further processing.
+* `isotopomers` - Should we calculate the isotompers, possible values are xy, jcamp, array or any combination (default: false). The use of "arrayXYXY" or "arrayXXYY" allows to get back a javascript array for further processing.
 * `resolution` - Specify the resolution to calculate the information (default: 0.001)
 * `threshold` - Intensity cutoff (default: 1e-5)
 * `gaussianWidth` - Define the number of point (default: 0). A good value is 10 which means that the width at half the height will be 10 points.
