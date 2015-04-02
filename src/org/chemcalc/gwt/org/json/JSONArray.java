@@ -12,6 +12,20 @@ public class JSONArray {
 	public JSONArray() {
 		obj = new com.google.gwt.json.client.JSONArray();
 	}
+
+	public JSONArray(double[] array) {
+		this();
+		for (int i = 0; i < array.length; i++) {
+			put(array[i]);
+		}
+	}
+
+	public JSONArray(double[][] array) {
+		this();
+		for (int i = 0; i < array.length; i++) {
+			put(new JSONArray(array[i]));
+		}
+	}
 	
 	public com.google.gwt.json.client.JSONArray getGwtObj() {
 		return obj;

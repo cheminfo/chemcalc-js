@@ -88,7 +88,11 @@ public class JSONObject {
 	
 	public JSONObject put(String key, BigInteger part) {
 		return put(key, part.doubleValue());
-	} 
+	}
+
+	public JSONObject put(String key, double[][] array) {
+		return put(key, new JSONArray(array));
+	}
 	
 	public com.google.gwt.json.client.JSONObject getGwtObj() {
 		return obj;
