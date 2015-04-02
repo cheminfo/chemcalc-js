@@ -42,7 +42,7 @@
   "homepage": "http://www.chemcalc.org",
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gwt-api-exporter": "^1.0.1",
+    "gwt-api-exporter": "^1.1.0",
     "minimist": "^1.1.1",
     "mocha": "latest",
     "mocha-better-spec-reporter": "latest",

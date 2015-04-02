@@ -80,10 +80,15 @@ function compile(mode) {
         } else {
             args.push('PRETTY');
         }
+        var execOptions;
         if (verbose) {
             args.push('-logLevel', 'DEBUG');
+        } else {
+            execOptions = {
+                stdio: 'inherit'
+            };
         }
-        var result = child_process.execFileSync('java', args);
+        var result = child_process.execFileSync('java', args, execOptions);
         if (verbose) {
             var name = 'compile.log';
             fs.writeFileSync('./' + name, result);
@@ -95,7 +100,8 @@ function compile(mode) {
 function updateCVS() {
     log('updating chemcalc CVS repo');
     child_process.execFileSync('cvs', ['update'], {
-        cwd: config.chemcalc
+        cwd: config.chemcalc,
+        stdio: 'inherit'
     });
 }
 
