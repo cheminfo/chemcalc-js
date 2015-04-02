@@ -58,7 +58,7 @@ __Arguments__
 
 __Options__
 
-* `isotopomers` - Should we calculate the isotompers, possible values are xy, jcamp, array or any combination (default: false). The use of "arrayXYXY" or "arrayXXYY" allows to get back a javascript array for further processing.
+* `isotopomers` - Should we calculate the isotompers, possible values are xy, jcamp, array or any comma-separated combination (default: false). The use of "arrayXYXY" or "arrayXXYY" allows to get back a javascript array for further processing.
 * `resolution` - Specify the resolution to calculate the information (default: 0.001)
 * `threshold` - Intensity cutoff (default: 1e-5)
 * `gaussianWidth` - Define the number of point (default: 0). A good value is 10 which means that the width at half the height will be 10 points.
@@ -69,7 +69,7 @@ __Options__
 __Examples__
 
 `Chemcalc.analyzeMF("CH3CH2Cl")` Retrieve a JSON containing the information about all the parts of this molecular formula. In this case there is only one part.  
-`Chemcalc.analyzeMF("CH3CH2Cl",{isotopomers:"xy,jcamp",reolustion:0.0001})` Retrieve a JSON containing the information for a molecular formula with a resolution of 0.0001 and calculate also the isotopomers as a jcamp and xy.  
+`Chemcalc.analyzeMF("CH3CH2Cl",{isotopomers:"xy,jcamp",resolution:0.0001})` Retrieve a JSON containing the information for a molecular formula with a resolution of 0.0001 and calculate also the isotopomers as a jcamp and xy.  
 `Chemcalc.analyzeMF("RuClH(CO)(PPh3)3")` MF containing groups (like "Ph") and parenthesis.  
 `Chemcalc.analyzeMF("CuSO4.5H2O")` MF containing many parts.  
 `Chemcalc.analyzeMF("{Ph,Me}Me")` MF containing a mixture of groups (like in combinatorial chemistry), ie 0.5PhMe+0.5MeMe.  
