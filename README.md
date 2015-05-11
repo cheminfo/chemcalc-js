@@ -65,6 +65,7 @@ __Options__
 * `gaussianResolution` - Define resolution that corresponds the width at half-height (default: resolution * gaussianWidth).
 * `joiningAlgorithm` - May take 2 values: "center" (center of mass) or "main" (keep the main peak) (default: main)
 * `typedResult` - The result field will be typed like "mf" "jcamp" ... so instead of having "mf":"C10H12" the json will contain "mf":{type:"mf",value:"C10H12"} (default: false)
+* `defaultUnsaturationContribution` - Allow to have a default value for the isotope with undefined unsaturation contribution. By default it is null and therefore if you use element like Ru, V, ... the unsaturation will not be calculated.
 
 __Examples__
 
@@ -99,6 +100,7 @@ __Options__
 * `massRange` - Range of mass to analyze (default: 0.5)
 * `maxNumberRows` - Maximum number of results (rows) to retrieve (default: 1000)
 * `typedResult` - The result field will be typed like "mf" "jcamp" ... so instead of having "mf":"C10H12" the json will contain "mf":{type:"mf",value:"C10H12"}
+* `defaultUnsaturationContribution` - Allow to have a default value for the isotope with undefined unsaturation contribution. By default it is null and therefore if you use element like Ru, V, ... the unsaturation will not be calculated and therefore filtering is not possible.
 
 __Examples__
 
