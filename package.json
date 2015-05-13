@@ -1,6 +1,6 @@
 {
   "name": "chemcalc",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Analyse molecular formula",
   "main": "dist/chemcalc.js",
   "scripts": {
