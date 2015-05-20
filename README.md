@@ -109,31 +109,7 @@ __Examples__
 
 ### Peptides
 
-#### convertAASequence(sequence)
-
-Returns a peptidic sequence from a PDB or one letter code to the internal molecular formula format
-
-__Arguments__
-
-* `sequence` - string with the amino acids sequence
-
-#### chargePeptide(mf)
-
-Add a positive charge on Arg, His and Lys
-
-__Arguments__
-
-* `mf` - string with a molecular formula to charge
-
-#### generatePeptideFragments(mf, [options])
-
-Generate [peptide fragmentation](http://en.wikipedia.org/wiki/Peptide_sequence_tag).  
-Returns an array of molecular formulas with the different fragments. 
-
-__Arguments__
-
-* `mf` - string with the molecular formula
-* `options` - object with requested fragments. Default: `{a:false, b:true, c:false, x:false, y:true, z:false, i:false}`
+All the methods has been moved to chemcalc-extented.
 
 ## Development
 
