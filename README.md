@@ -59,10 +59,9 @@ __Arguments__
 __Options__
 
 * `isotopomers` - Should we calculate the isotompers, possible values are xy, jcamp, array or any comma-separated combination (default: false). The use of "arrayXYXY" or "arrayXXYY" allows to get back a javascript array for further processing.
-* `resolution` - Specify the resolution to calculate the information (default: 0.001)
+* `fwhm` - Specify the FWHM to calculate the information (default: 0.001)
 * `threshold` - Intensity cutoff (default: 1e-5)
 * `gaussianWidth` - Define the number of point (default: 0). A good value is 10 which means that the width at half the height will be 10 points.
-* `gaussianResolution` - Define resolution that corresponds the width at half-height (default: resolution * gaussianWidth).
 * `joiningAlgorithm` - May take 2 values: "center" (center of mass) or "main" (keep the main peak) (default: main)
 * `typedResult` - The result field will be typed like "mf" "jcamp" ... so instead of having "mf":"C10H12" the json will contain "mf":{type:"mf",value:"C10H12"} (default: false)
 * `defaultUnsaturationContribution` - Allow to have a default value for the isotope with undefined unsaturation contribution. By default it is null and therefore if you use element like Ru, V, ... the unsaturation will not be calculated.
@@ -70,7 +69,7 @@ __Options__
 __Examples__
 
 `Chemcalc.analyzeMF("CH3CH2Cl")` Retrieve a JSON containing the information about all the parts of this molecular formula. In this case there is only one part.  
-`Chemcalc.analyzeMF("CH3CH2Cl",{isotopomers:"xy,jcamp",resolution:0.0001})` Retrieve a JSON containing the information for a molecular formula with a resolution of 0.0001 and calculate also the isotopomers as a jcamp and xy.  
+`Chemcalc.analyzeMF("CH3CH2Cl",{isotopomers:"xy,jcamp",fwhm:0.0001})` Retrieve a JSON containing the information for a molecular formula with a FWHM of 0.0001 and calculate also the isotopomers as a jcamp and xy.  
 `Chemcalc.analyzeMF("RuClH(CO)(PPh3)3")` MF containing groups (like "Ph") and parenthesis.  
 `Chemcalc.analyzeMF("CuSO4.5H2O")` MF containing many parts.  
 `Chemcalc.analyzeMF("{Ph,Me}Me")` MF containing a mixture of groups (like in combinatorial chemistry), ie 0.5PhMe+0.5MeMe.  
