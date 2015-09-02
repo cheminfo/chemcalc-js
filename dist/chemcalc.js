@@ -1,7 +1,7 @@
 /**
  * chemcalc - Analyse molecular formula
- * @version v3.0.3
- * @date 2015-09-02T09:09:55.728Z
+ * @version v3.0.4
+ * @date 2015-09-02T14:38:40.161Z
  * @link http://www.chemcalc.org
  * @license BSD
 */
@@ -672,7 +672,7 @@ Kg(23,45,{116:1},sk,tk,uk);var cf=yi(23);Kg(67,49,Qu,vk);var df=yi(67);Kg(42,10,
 
         var toReturn = $wnd["CI"]["Chemcalc"];
 
-        toReturn.version = '3.0.3';
+        toReturn.version = '3.0.4';
 
         return toReturn;
     }
@@ -690,13 +690,13 @@ Kg(23,45,{116:1},sk,tk,uk);var cf=yi(23);Kg(67,49,Qu,vk);var df=yi(67);Kg(42,10,
     } else { // Browser
         if (true) {
             // Timer proxies
-            fakeWindow.setTimeout = window.setTimeout.bind(window);
-            fakeWindow.clearTimeout = window.clearTimeout.bind(window);
-            fakeWindow.setInterval = window.setInterval.bind(window);
-            fakeWindow.clearInterval = window.clearInterval.bind(window);
-            fakeWindow.document = window.document;
+            fakeWindow.setTimeout = self.setTimeout.bind(self);
+            fakeWindow.clearTimeout = self.clearTimeout.bind(self);
+            fakeWindow.setInterval = self.setInterval.bind(self);
+            fakeWindow.clearInterval = self.clearInterval.bind(self);
+            fakeWindow.document = self.document;
         } else {
-            fakeWindow = window;
+            fakeWindow = self;
         }
 
         if (typeof define === 'function' && define.amd) { // AMD
@@ -706,7 +706,7 @@ Kg(23,45,{116:1},sk,tk,uk);var cf=yi(23);Kg(67,49,Qu,vk);var df=yi(67);Kg(42,10,
         } else { // Global
             var path = ["CI","Chemcalc"];
             var l = path.length - 1;
-            var obj = window;
+            var obj = self;
             for (var i = 0; i < l; i++) {
                 obj = obj[path[i]] || (obj[path[i]] = {});
             }
