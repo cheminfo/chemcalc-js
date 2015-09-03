@@ -1,7 +1,7 @@
 /**
  * chemcalc - Analyse molecular formula
- * @version v3.0.5
- * @date 2015-09-03T06:53:54.139Z
+ * @version v3.0.6
+ * @date 2015-09-03T07:03:35.477Z
  * @link http://www.chemcalc.org
  * @license BSD
 */
@@ -672,7 +672,7 @@ Kg(23,45,{116:1},sk,tk,uk);var cf=yi(23);Kg(67,49,Qu,vk);var df=yi(67);Kg(42,10,
 
         var toReturn = $wnd["CI"]["Chemcalc"];
 
-        toReturn.version = '3.0.5';
+        toReturn.version = '3.0.6';
 
         return toReturn;
     }
@@ -699,12 +699,9 @@ Kg(23,45,{116:1},sk,tk,uk);var cf=yi(23);Kg(67,49,Qu,vk);var df=yi(67);Kg(42,10,
         fakeWindow.clearTimeout = globalEnv.clearTimeout.bind(globalEnv);
         fakeWindow.setInterval = globalEnv.setInterval.bind(globalEnv);
         fakeWindow.clearInterval = globalEnv.clearInterval.bind(globalEnv);
-        if (isBrowser) {
-            fakeWindow.document = globalEnv.document
-        } else {
-            fakeWindow.document = {};
-        }
     }
+
+    fakeWindow.document = isBrowser ? (globalEnv.document || {}) : {};
 
     if (typeof module !== 'undefined' && module.exports) { // NodeJS
         module.exports = getExports(fakeWindow);
