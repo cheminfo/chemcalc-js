@@ -13,7 +13,7 @@ describe('analyseMF', function () {
         result.mw.should.be.approximately(71.058, 1e-3);
         result.em.should.be.approximately(71.025, 1e-3);
         result.nominalMass.should.equal(71);
-        result.parts.should.be.an.Array.with.length(1);
+        result.parts.should.be.an.Array().with.length(1);
         result.parts[0].should.have.properties(['mf', 'mw', 'em', 'unsaturation', 'msem', 'ea']);
         result.parts[0].unsaturation.should.equal(2.5);
     });
@@ -22,8 +22,8 @@ describe('analyseMF', function () {
 
         it('should work with array (backwards compatibility)', function () {
             var result = analyseMF(simpleMF, {isotopomers: 'array'});
-            result.spectrum.should.be.an.Array.with.lengthOf(2);
-            result.spectrum[0].should.be.an.Array.with.lengthOf(11);
+            result.spectrum.should.be.an.Array().with.lengthOf(2);
+            result.spectrum[0].should.be.an.Array().with.lengthOf(11);
         });
 
         it('should work with xy', function () {
@@ -40,15 +40,15 @@ describe('analyseMF', function () {
 
         it('should work with arrayXYXY', function () {
             var result = analyseMF(simpleMF, {isotopomers: 'arrayXYXY'});
-            result.arrayXYXY.should.be.an.Array.with.lengthOf(11);
-            result.arrayXYXY[0].should.be.an.Array.with.lengthOf(2);
+            result.arrayXYXY.should.be.an.Array().with.lengthOf(11);
+            result.arrayXYXY[0].should.be.an.Array().with.lengthOf(2);
         });
 
         it('should work with arrayXXYY', function () {
             var result = analyseMF(simpleMF, {isotopomers: 'arrayXXYY'});
-            result.arrayXXYY.should.be.an.Array.with.lengthOf(2);
-            result.arrayXXYY[0].should.be.an.Array.with.lengthOf(11);
-            result.arrayXXYY[1].should.be.an.Array.with.lengthOf(11);
+            result.arrayXXYY.should.be.an.Array().with.lengthOf(2);
+            result.arrayXXYY[0].should.be.an.Array().with.lengthOf(11);
+            result.arrayXXYY[1].should.be.an.Array().with.lengthOf(11);
             result.arrayXXYY[1][0].should.equal(1);
         });
 

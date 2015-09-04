@@ -6,7 +6,7 @@ describe('getInfo', function () {
     var info = CC.getInfo();
     it('should return information about elements', function () {
         var elements = info.elements;
-        elements.should.be.an.Array;
+        elements.should.be.an.Array();
         var hasCarbon, hasFermium;
         for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
@@ -16,7 +16,7 @@ describe('getInfo', function () {
                     symbol: 'C',
                     name: 'Carbon'
                 });
-                el.isotopes.should.be.an.Array;
+                el.isotopes.should.be.an.Array();
             } else if (el.atomicNumber === 100) {
                 hasFermium = true;
                 el.mass.should.equal(0);
@@ -30,7 +30,7 @@ describe('getInfo', function () {
 
     it('should return information about groups', function () {
         var groups = info.groups;
-        groups.should.be.an.Array;
+        groups.should.be.an.Array();
         var hasValine, hasFmoc, hasTritium;
         for (var i = 0; i < groups.length; i++) {
             var group = groups[i];
