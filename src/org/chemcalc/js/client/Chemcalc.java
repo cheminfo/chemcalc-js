@@ -30,7 +30,7 @@ public class Chemcalc {
 		HashMap<String, String> mapOptions = convertToHashMap(options);
 		mapOptions.put("mf", mf);
 		return JSONObjectToJSObject(JSONForMF.execute(mapOptions,
-				LoadFromFiles.groups(), LoadFromFiles.elements()));
+				LoadFromFiles.groups(mapOptions.get("groups")), LoadFromFiles.elements()));
 	}
 
 	public static JavaScriptObject mfFromMonoisotopicMass(double mass,
@@ -38,7 +38,7 @@ public class Chemcalc {
 		HashMap<String, String> mapOptions = convertToHashMap(options);
 		mapOptions.put("monoisotopicMass", Double.toString(mass));
 		return JSONObjectToJSObject(MFFromMonoisotopicMass.execute(mapOptions,
-				LoadFromFiles.groups(), LoadFromFiles.elements()));
+				LoadFromFiles.groups(mapOptions.get("groups")), LoadFromFiles.elements()));
 	}
 
 

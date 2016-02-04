@@ -65,7 +65,7 @@ __Options__
 * `joiningAlgorithm` - May take 2 values: "center" (center of mass) or "main" (keep the main peak) (default: main)
 * `typedResult` - The result field will be typed like "mf" "jcamp" ... so instead of having "mf":"C10H12" the json will contain "mf":{type:"mf",value:"C10H12"} (default: false)
 * `defaultUnsaturationContribution` - Allow to have a default value for the isotope with undefined unsaturation contribution. By default it is null and therefore if you use element like Ru, V, ... the unsaturation will not be calculated.
-* `groups` - an object containing abbreviation, molecular formula that can be used further in the definiation of molecular formula. It should always ba an uppercase followed by 2 to 5 lowercase. Example: {"Ala":"C3H5NO", "Gly":"C2H3NO"}
+* `groups` - a comma separated string containing abbreviation : molecular formula that can be used further in the definiation of molecular formula. It should always ba an uppercase followed by 2 to 5 lowercase. Example: Ala:C3H5NO,Gly:C2H3NO
 
 
 __Examples__
@@ -102,6 +102,7 @@ __Options__
 * `maxNumberRows` - Maximum number of results (rows) to retrieve (default: 1000)
 * `typedResult` - The result field will be typed like "mf" "jcamp" ... so instead of having "mf":"C10H12" the json will contain "mf":{type:"mf",value:"C10H12"}
 * `defaultUnsaturationContribution` - Allow to have a default value for the isotope with undefined unsaturation contribution. By default it is null and therefore if you use element like Ru, V, ... the unsaturation will not be calculated and therefore filtering is not possible.
+* `groups` - a comma separated string containing abbreviation : molecular formula that can be used further in the definiation of molecular formula. It should always ba an uppercase followed by 2 to 5 lowercase. Example: Ala:C3H5NO,Gly:C2H3NO
 
 __Examples__
 
