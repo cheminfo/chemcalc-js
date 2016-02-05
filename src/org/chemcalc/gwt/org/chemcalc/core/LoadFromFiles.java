@@ -84,7 +84,7 @@ public class LoadFromFiles {
 			var groupName=part.replaceAll(" *:.*","");
 			var groupMF=part.replaceAll(".*: *","");
 			if (! groupName.equals("") && ! groupMF.equals("")) {
-				groups.push(groupName, new Group(groupName,groupName,groupMF,elements,groups)));
+				groups.put(groupName, new Group(groupName,groupName,groupMF,elements,groups)));
 			}
 		}
 	}
