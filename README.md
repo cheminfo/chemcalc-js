@@ -5,7 +5,7 @@
   [![npm download][download-image]][download-url]
 
 Library allowing to manipulate and find molecular formula.  
-This library contains 2 main functions: <b>analyzeMF</b> and <b>mfFromMonoisotopicMass</b>.  
+This library contains 2 main functions: <b>analyseMF</b> and <b>mfFromMonoisotopicMass</b>.  
 In all the molecular formula you are allowed to use groups like Phe, Ala, Gly, Ph, ...
 
 ## Installation
@@ -70,14 +70,14 @@ __Options__
 
 __Examples__
 
-`Chemcalc.analyzeMF("CH3CH2Cl")` Retrieve a JSON containing the information about all the parts of this molecular formula. In this case there is only one part.  
-`Chemcalc.analyzeMF("CH3CH2Cl",{isotopomers:"xy,jcamp",fwhm:0.0001})` Retrieve a JSON containing the information for a molecular formula with a FWHM of 0.0001 and calculate also the isotopomers as a jcamp and xy.  
-`Chemcalc.analyzeMF("RuClH(CO)(PPh3)3")` MF containing groups (like "Ph") and parenthesis.  
-`Chemcalc.analyzeMF("CuSO4.5H2O")` MF containing many parts.  
-`Chemcalc.analyzeMF("{Ph,Me}Me")` MF containing a mixture of groups (like in combinatorial chemistry), ie 0.5PhMe+0.5MeMe.  
-`Chemcalc.analyzeMF("HAla(H-1Ph)OH")` MF containing a negative atom count. Funny way to represent the phenyl alanine but very practical to describe peptide side-chain modification.  
-`Chemcalc.analyzeMF("C{50,50}10C10")` MF containing atoms with non natural isotopic ratio. ie 10 atoms of enriched C (50% 12C and 50% 13C) and 10 natural abundance carbons.  
-`Chemcalc.analyzeMF("HAla10OH+.HAla10OH++.HAla10OH+++")` MF containing many parts and charges. ie a mixure of mono, di and tri- charged decapeptide, perfect for mass spectra simulation.  
+`Chemcalc.analyseMF("CH3CH2Cl")` Retrieve a JSON containing the information about all the parts of this molecular formula. In this case there is only one part.  
+`Chemcalc.analyseMF("CH3CH2Cl",{isotopomers:"xy,jcamp",fwhm:0.0001})` Retrieve a JSON containing the information for a molecular formula with a FWHM of 0.0001 and calculate also the isotopomers as a jcamp and xy.  
+`Chemcalc.analyseMF("RuClH(CO)(PPh3)3")` MF containing groups (like "Ph") and parenthesis.  
+`Chemcalc.analyseMF("CuSO4.5H2O")` MF containing many parts.  
+`Chemcalc.analyseMF("{Ph,Me}Me")` MF containing a mixture of groups (like in combinatorial chemistry), ie 0.5PhMe+0.5MeMe.  
+`Chemcalc.analyseMF("HAla(H-1Ph)OH")` MF containing a negative atom count. Funny way to represent the phenyl alanine but very practical to describe peptide side-chain modification.  
+`Chemcalc.analyseMF("C{50,50}10C10")` MF containing atoms with non natural isotopic ratio. ie 10 atoms of enriched C (50% 12C and 50% 13C) and 10 natural abundance carbons.  
+`Chemcalc.analyseMF("HAla10OH+.HAla10OH++.HAla10OH+++")` MF containing many parts and charges. ie a mixure of mono, di and tri- charged decapeptide, perfect for mass spectra simulation.  
 
 #### mfFromMonoisotopicMass(mass, [options])
 
@@ -98,7 +98,7 @@ __Options__
 * `integerUnsaturation` - Integer number of unsaturation (default: true)
 * `useUnsaturation` - Should we use unsaturation as a filter if possible (default: true)
 * `numberOfResultsOnly` - Returns only the number of results found (default: false)
-* `massRange` - Range of mass to analyze (default: 0.5)
+* `massRange` - Range of mass to analyse (default: 0.5)
 * `maxNumberRows` - Maximum number of results (rows) to retrieve (default: 1000)
 * `typedResult` - The result field will be typed like "mf" "jcamp" ... so instead of having "mf":"C10H12" the json will contain "mf":{type:"mf",value:"C10H12"}
 * `defaultUnsaturationContribution` - Allow to have a default value for the isotope with undefined unsaturation contribution. By default it is null and therefore if you use element like Ru, V, ... the unsaturation will not be calculated and therefore filtering is not possible.
