@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git://github.com/cheminfo/chemcalc-js.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "cheminfo",
     "molecular",
