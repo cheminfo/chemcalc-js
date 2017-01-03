@@ -1,4 +1,4 @@
-package org.chemcalc.js.client;
+package org.chemcalc.js;
 
 import com.google.gwt.core.client.EntryPoint;
 

@@ -10,7 +10,7 @@ In all the molecular formula you are allowed to use groups like Phe, Ala, Gly, P
 
 ## Installation
 
-`npm install chemcalc`  
+`npm install chemcalc --save`  
 OR  
 `bower install chemcalc`  
 OR just include in a script tag

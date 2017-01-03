@@ -1,4 +1,4 @@
-package org.chemcalc.js.client;
+package org.chemcalc.js;
 
 import java.util.HashMap;
 
@@ -11,19 +11,15 @@ import org.json.JSONObject;
 import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.js.JsExport;
-import com.google.gwt.core.client.js.JsNamespace;
-import com.google.gwt.core.client.js.JsType;
+import jsinterop.annotations.*;
 
-@JsType
-@JsNamespace("$wnd.CI")
-@JsExport
+@JsType(name = "Chemcalc")
 public class Chemcalc {
 
 	private static JsArray<JavaScriptObject> aa = null;
 	
 	public static JavaScriptObject getInfo() {
-		return JSONObjectToJSObject(GetInfo.execute(new HashMap<String, String>(), LoadFromFiles.groups(), LoadFromFiles.elements()));
+		return JSONObjectToJSObject(GetInfo.execute(new HashMap<String, String>(), LoadFromFiles.groups(null), LoadFromFiles.elements()));
 	}
 
 	public static JavaScriptObject analyseMF(String mf, JavaScriptObject options) {

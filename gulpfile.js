@@ -67,12 +67,12 @@ function compile(mode) {
             '-Xmx512m',
             '-cp', classpath,
             'com.google.gwt.dev.Compiler',
-            'org.chemcalc.js.ChemcalcJS',
+            'org.chemcalc.ChemcalcJS',
             '-optimize', '9',
             '-XnocheckCasts',
             '-XnoclassMetadata',
             '-nocheckAssertions',
-            '-XjsInteropMode', 'JS',
+            '-generateJsInteropExports',
             '-style'
         ];
         if (mode === 'min') {
