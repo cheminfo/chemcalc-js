@@ -76,17 +76,22 @@ public class LoadFromFiles {
 	}
 	
 	public static HashMap<String, Group> groups(String otherGroups) {
-		if (otherGroups==null) return groups;
+		if (otherGroups == null) return groups;
 		// we need to append the otherGroups
-		String[] parts=otherGroups.split(" *, *");
-		for (int i=0; i<parts.length; i++) {
+		String[] parts = otherGroups.split(" *, *");
+		for (int i = 0; i < parts.length; i++) {
 			String part=parts[i];
-			var groupName=part.replaceAll(" *:.*","");
-			var groupMF=part.replaceAll(".*: *","");
-			if (! groupName.equals("") && ! groupMF.equals("")) {
-				groups.put(groupName, new Group(groupName,groupName,groupMF,elements,groups)));
+			String groupName=part.replaceAll(" *:.*", "");
+			String groupMF=part.replaceAll(".*: *", "");
+			if (!groupName.equals("") && !groupMF.equals("")) {
+				try {
+					groups.put(groupName, new Group(groupName,groupName,groupMF,elements,groups));
+				} catch (MFException e) {
+					// ignore
+				}
 			}
 		}
+		return groups;
 	}
 
 }
