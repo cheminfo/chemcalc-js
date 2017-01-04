@@ -19,9 +19,9 @@ describe('getInfo', function () {
                 el.isotopes.should.be.an.Array();
             } else if (el.atomicNumber === 100) {
                 hasFermium = true;
-                el.mass.should.equal(0);
+                el.mass.should.equal(257.095106169);
                 el.isotopes.should.have.length(1);
-                el.isotopes[0].percentage.should.equal(0);
+                el.isotopes[0].percentage.should.equal(100);
             }
         }
         hasCarbon.should.be.true;
