@@ -1,7 +1,7 @@
 /**
  * chemcalc - Analyse molecular formula
- * @version v3.3.0
- * @date 2017-01-04T12:55:03.645Z
+ * @version v3.3.1
+ * @date 2017-01-04T12:56:15.903Z
  * @link http://www.chemcalc.org
  * @license BSD
 */
@@ -692,7 +692,7 @@ _.u=function nc(a){var b={},j;var c=[];a[ow]=c;var d=arguments.callee.caller;whi
 
         var toReturn = $wnd["CI"]["Chemcalc"];
 
-        toReturn.version = '3.3.0';
+        toReturn.version = '3.3.1';
 
         return toReturn;
     }
