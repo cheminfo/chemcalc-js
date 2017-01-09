@@ -1,7 +1,7 @@
 /**
  * chemcalc - Analyse molecular formula
- * @version v3.3.1
- * @date 2017-01-04T12:56:15.903Z
+ * @version v3.3.2
+ * @date 2017-01-09T13:16:24.258Z
  * @link http://www.chemcalc.org
  * @license BSD
 */
@@ -692,29 +692,28 @@ _.u=function nc(a){var b={},j;var c=[];a[ow]=c;var d=arguments.callee.caller;whi
 
         var toReturn = $wnd["CI"]["Chemcalc"];
 
-        toReturn.version = '3.3.1';
+        toReturn.version = '3.3.2';
 
         return toReturn;
     }
 
-    var isBrowser, globalEnv, document;
+    var isBrowser, globalEnv;
 
-    if (typeof window !== 'undefined') { // usual browser window
-        isBrowser = true;
-        globalEnv = window;
-        document = window.document;
-    } else if (typeof self !== 'undefined') { // Web Worker
+    if (typeof self !== 'undefined') { // Usual Browser Window or Web Worker
         isBrowser = true;
         globalEnv = self;
-        document = {};
     } else if (typeof global !== 'undefined') { // Node.js
         isBrowser = false;
         globalEnv = global;
-        document = {};
     } else { // Other environment (example: CouchDB)
         isBrowser = false;
         globalEnv = root;
-        document = {};
+    }
+
+    var document = globalEnv.document || {};
+
+    if (!document.compatMode) {
+        document.compatMode = 'CSS1Compat';
     }
 
     var fakeWindow;
