@@ -33,7 +33,7 @@ gulp.task('export', build);
 
 gulp.task('default', ['build:min']);
 
-gulp.task('update', updateCVS);
+gulp.task('update', updateGIT);
 
 function build(done) {
     var warDir = 'war/chemcalc';
@@ -97,9 +97,9 @@ function compile(mode) {
     }
 }
 
-function updateCVS() {
-    log('updating chemcalc CVS repo');
-    child_process.execFileSync('cvs', ['update'], {
+function updateGIT() {
+    log('updating chemcalc GIT repo');
+    child_process.execFileSync('git', ['pull'], {
         cwd: config.chemcalc,
         stdio: 'inherit'
     });
