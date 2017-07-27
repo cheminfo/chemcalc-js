@@ -4,8 +4,6 @@ var analyseMF = require('..').analyseMF;
 
 describe('analyseMF', function () {
 
-    
-
     describe('check various MF', function () {
         it('ONC2H3N', function () {
             var result = analyseMF('ONC2H3N');
@@ -43,7 +41,31 @@ describe('analyseMF', function () {
             result.nominalMass.should.equal(98);
         });
     });
-    
+
+
+    describe('isotopomers joiningAlgorithm', function () {
+        var simpleMF = 'C100H100';
+        it('default joining algorithm', function () {
+            var result = analyseMF(simpleMF, {
+                fwhm: 0.2,
+                isotopomers: 'array'
+            });
+            result.spectrum.should.be.an.Array().with.lengthOf(2);
+            result.spectrum[0].should.be.an.Array().with.lengthOf(9);
+        });
+
+        it('default joining algorithm', function () {
+            var result = analyseMF(simpleMF, {
+                fwhm: 0.2,
+                isotopomers: 'array',
+                joiningAlgorithm: 'center'
+            });
+            console.log(result);
+            result.spectrum.should.be.an.Array().with.lengthOf(2);
+            result.spectrum[0].should.be.an.Array().with.lengthOf(9);
+            result.spectrum[0][0].should.be.approximately(1300.78250, 0.001);
+        });
+    });
 
     describe('isotopomers', function () {
         var simpleMF = 'ONC2H3N';
