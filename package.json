@@ -1,6 +1,6 @@
 {
   "name": "chemcalc",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "Analyse molecular formula",
   "main": "dist/chemcalc.js",
   "scripts": {
@@ -47,8 +47,8 @@
     "gulp": "^3.8.11",
     "gwt-api-exporter": "^1.1.0",
     "minimist": "^1.1.1",
-    "mocha": "latest",
+    "mocha": "^3.5.3",
     "mocha-better-spec-reporter": "latest",
-    "should": "latest"
+    "should": "^13.1.0"
   }
 }
